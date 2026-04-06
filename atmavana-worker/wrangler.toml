@@ -1,0 +1,39 @@
+name = "atmavana"
+main = "src/worker.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# ─── Domain ───
+# Step 1: Deploy to workers.dev first (no routes needed)
+# Step 2: Connect atmavana.net via Cloudflare Dashboard > Workers > atmavana > Settings > Domains & Routes
+# workers_dev = true is the default
+
+# ─── D1 Database ───
+[[d1_databases]]
+binding = "DB"
+database_name = "atmavana-db"
+database_id = "6fdcf568-9d3b-4e62-afe0-8fc0e0ff913d"
+
+# ─── KV Namespace ───
+[[kv_namespaces]]
+binding = "SESSIONS"
+id = "95b23c69db264047891038de182a3a4e"
+
+# ─── Secrets (set via: npx wrangler secret put SECRET_NAME) ───
+# STRIPE_SECRET_KEY        → Your Stripe secret key (sk_live_...)
+# STRIPE_WEBHOOK_SECRET    → Stripe webhook signing secret (whsec_...)
+# NOWPAYMENTS_API_KEY      → NOWPayments API key
+# NOWPAYMENTS_IPN_SECRET   → NOWPayments IPN verification secret
+# SUMSUB_APP_TOKEN         → Sumsub application token
+# SUMSUB_SECRET_KEY        → Sumsub secret key for HMAC signing
+# JWT_SECRET               → Random 64-char string for JWT signing
+# ADMIN_PASSWORD           → Initial admin password
+
+# ─── Environment Variables (non-secret) ───
+[vars]
+ENVIRONMENT = "production"
+PLATFORM_NAME = "AtmaVana"
+PLATFORM_DOMAIN = "atmavana.net"
+COMMISSION_FIXED_USD = "5"
+HEALER_SUB_STANDARD_USD = "15"
+HEALER_SUB_PRO_USD = "35"

@@ -1,0 +1,14 @@
+{
+  "name": "atmavana",
+  "version": "1.0.0",
+  "description": "AtmaVana — Healer toolkit and wellness marketplace",
+  "main": "src/worker.js",
+  "scripts": {
+    "dev": "npx wrangler dev",
+    "deploy": "npx wrangler deploy",
+    "tail": "npx wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "^4.79.0"
+  }
+}
